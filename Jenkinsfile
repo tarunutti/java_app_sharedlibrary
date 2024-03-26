@@ -6,10 +6,9 @@ pipeline{
         choice(name: 'action', choices: 'create\ndelete', description: 'Choose create/Destroy')
     }
     stages{
-        when {expression {
-            params.action == 'create'
-        }}
+
         stage('Checkout Code'){
+             when { expression { params.action == 'create' } }
             steps{
                 script{
                     gitCheckout("https://github.com/vikash-kumar01/mrdevops_java_app.git", "main")
