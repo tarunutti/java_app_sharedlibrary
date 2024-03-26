@@ -11,5 +11,12 @@ pipeline{
                 }
             }
         }
+        stage('Unit test'){
+            steps{
+                script{
+                    unitTest()
+                }
+            }
+        }
     }
 }
