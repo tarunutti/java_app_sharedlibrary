@@ -6,7 +6,6 @@ pipeline{
         choice(name: 'action', choices: 'create\ndelete', description: 'Choose create/Destroy')
     }
     stages{
-
         stage('Checkout Code'){
              when { expression { params.action == 'create' } }
             steps{
@@ -32,14 +31,6 @@ pipeline{
                 // }
            // }
         // }
-        stage('Static Code Analysis'){
-            steps{
-                script{
-                    
-                    staticCodeAnalysis()
-                }
-            }
-        }
         stage('Static Code Analysis'){
             steps{
                 script{
