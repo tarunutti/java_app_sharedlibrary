@@ -2,7 +2,13 @@
 
 pipeline{
     agent any
+    parameters{
+        choices(name: 'action', choices: 'create\ndelete', description: 'Choose create/Destroy')
+    }
     stages{
+        when (expression {
+            params.action == 'create'
+        })
         stage('Checkout Code'){
             steps{
                 script{
@@ -11,19 +17,27 @@ pipeline{
                 }
             }
         }
-        stage('Unit test'){
-            steps{
-                script{
+        //stage('Unit test'){
+           // steps{
+             //   script{
 
-                    unitTest()
-                }
-            }
-        }
-        stage('Integration test'){
+             //       unitTest()
+               // }
+           // }
+       // }
+       // stage('Integration test'){
+           // steps{
+               // script{
+                    
+                   // integrationTest()
+                // }
+           // }
+        // }
+        stage('Static Code Analysis'){
             steps{
                 script{
                     
-                    integrationTest()
+                    staticCodeAnalysis()
                 }
             }
         }
