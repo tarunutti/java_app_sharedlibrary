@@ -40,5 +40,15 @@ pipeline{
                 }
             }
         }
+        stage('Static Code Analysis'){
+            steps{
+                script{
+                    def sonarqubecredentials = 'Sonarqube'
+                    
+                    staticCodeAnalysis(sonarqubecredentials)
+                }
+            }
+        }
+
     }
 }
