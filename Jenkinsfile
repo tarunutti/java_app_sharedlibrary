@@ -6,9 +6,9 @@ pipeline{
         choice(name: 'action', choices: 'create\ndelete', description: 'Choose create/Destroy')
     }
     stages{
-        when (expression {
+        when {expression {
             params.action == 'create'
-        })
+        }}
         stage('Checkout Code'){
             steps{
                 script{
